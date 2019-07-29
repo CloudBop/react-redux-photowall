@@ -22,7 +22,8 @@ const Photo=(props)=>{
 // Defense programming of props.
 Photo.propTypes={
     post: PropTypes.object.isRequired,
-    onRemovePhoto: PropTypes.func.isRequired
+    // now as action->reducer
+    // onRemovePhoto: PropTypes.func.isRequired
 }
 // class Photo extends Component{
 //     render(){

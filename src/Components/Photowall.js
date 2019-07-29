@@ -23,7 +23,8 @@ const Photowall = (props) => (
 // Defense programming of props.
 Photowall.propTypes={
     posts: PropTypes.array.isRequired,
-    onRemovePhoto: PropTypes.func.isRequired
+    // passed as action->reducer
+    // onRemovePhoto: PropTypes.func.isRequired
 }
 
 // class based component
