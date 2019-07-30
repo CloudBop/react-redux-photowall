@@ -8,14 +8,20 @@ const Photowall = (props) => (
     <div>
         <Link className="add-icon" to="/AddPhoto"></Link>
         <div className='photo-grid'>
-            {props.posts
+            {
+                props.posts
                 // sort by largest number to smallest
                 // AKA most recent to oldest
                 // unix epoch = 1970 === 0
                 .sort( function(x,y){
                     return y.id - x.id
                 })
-                .map( (post,index)=> <Photo key={index} post={post} onRemovePhoto={props.onRemovePhoto}/>)}
+                .map( (post,index)=> <Photo 
+                key={index} 
+                post={post} 
+                {...props}
+                index={index}
+                />)}
         </div>
     </div>
     

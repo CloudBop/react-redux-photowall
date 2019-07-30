@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 // could use destructuring ?s
 const Photo=(props)=>{
@@ -8,13 +9,21 @@ const Photo=(props)=>{
     return(
 
     <figure className='figure'>
-        <img className="photo" src={post.imageLink} alt={post.description}/>
+        <Link to={`/single/${post.id}`}>  
+            <img className="photo" src={post.imageLink} alt={post.description}/>
+        </Link>
+       
         <figcaption> <p> { post.description } </p></figcaption>
         <div className="button-container">
             <button className="remove-button" onClick= {()=>{
-                // passed down from Main.js
-                props.onRemovePhoto(post)
+                props.removePost(props.index)
+                props.history.push('/')
             }}>> Remove</button>
+            <Link className="button" to={`/single/${post.id}`}>
+                <div className="speech-bubble">
+                    <div>{ props.comments[post.id] ? props.comments[post.id].length : 0 }</div>
+                </div>
+            </Link>
         </div>
         
     </figure>)
