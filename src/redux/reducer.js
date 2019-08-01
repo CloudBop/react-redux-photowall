@@ -12,19 +12,23 @@ const comments = ( state={}, action )=>{
                 return {...state, [action.postId]: [...state[action.postId], action.comment] }
             }
             //
-        default:
-            return state;
+        case 'LOAD_COMMENTS': return action.comments
+        
+        default: return state;
     }
 }
 
 const posts = (state = _posts, action)=>{
     // console.log(action.index)
+    console.log(action)
     switch (action.type) {
         // remove post @ action.index
         // first spread.slice(index) first part of array before el to remove
         // second, everythingthing after el to remove
         case 'REMOVE_POST': return [...state.slice(0, action.index), ...state.slice(action.index+1)]
         case 'ADD_POST': return [...state, action.post]
+        // return payload from fb
+        case 'LOAD_POSTS': return action.posts
 
 
         // has to return some form of state object

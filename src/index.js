@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 // styles 
 import './styles/stylesheet.css'
 // redux | applyMiddleware for Thunk
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 // communicate to store
 import rootReducer from './redux/reducer'
 // bind react and redux
@@ -20,7 +20,9 @@ import App from './Components/App'
 // this is what thunk does
 import thunk from 'redux-thunk'
 //
-import {database} from './database/config'
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk))
+// import {database} from './database/config'
+// const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk))
+const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
+// const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 ReactDOM.render(<Provider store={store} > <BrowserRouter> <App/> </BrowserRouter> </Provider>, document.getElementById('root'));

@@ -7,15 +7,21 @@ import { Route, Link } from 'react-router-dom'
 // url("https://image.flaticon.com/icons/svg/60/60740.svg") center no-repeat;
 
 export default class Main extends Component{
+
+    state = { loading:true}
     // constructor manages state.
     constructor(){
         // super === intiate this for extended component
         super()
     }
-
-    // componentDidMount(){
-    //     this.props.removePost(1)
-    // }
+    componentDidMount(){
+        
+        this.props.startLoadingPosts().then( ()=>{
+            this.setState( {loading: false} )
+        })
+        this.props.startLoadingComments()
+        
+    }
     
     render(){
         // redux-store data!
@@ -48,7 +54,7 @@ export default class Main extends Component{
 
                 <Route path="/single/:id" render={ (params) =>(
                     // make sure props passed first or match property of params is over-ridden
-                    <Single {...this.props} {...params}/>
+                    <Single loading={this.state.loading} {...this.props} {...params}/>
                 )}
                 />
                 

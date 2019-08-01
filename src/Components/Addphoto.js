@@ -19,7 +19,9 @@ class Addphoto extends Component{
                 imageLink
             }
 
-            this.props.addPost(post)
+            // this.props.addPost(post)
+            // firebase async promise
+            this.props.startAddingPost(post)
             this.props.history.push('/')
             // console.log(this.props)
         }

@@ -8,15 +8,18 @@ class Comments extends Component{
     handleSubmit(evt){
         evt.preventDefault()
         const comment = evt.target.elements.comment.value
-        // console.log(comment)
-        this.props.addComment(comment, this.props.id)
+        // console.log(comment) // this.props.addComment(comment, this.props.id)
+        // console.log(this.props)
+
+
+        this.props.startAddingComment(comment, this.props.id)
 
         evt.target.elements.comment.value = '';
 
     }
 
     render(){
-        console.log(this.props.comments)
+        // console.log(this.props)
         return (
         <div className="comment">
         {

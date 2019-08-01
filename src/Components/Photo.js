@@ -16,14 +16,19 @@ const Photo=(props)=>{
         <figcaption> <p> { post.description } </p></figcaption>
         <div className="button-container">
             <button className="remove-button" onClick= {()=>{
-                props.removePost(props.index)
+                // console.log(props) console.log(props.index, post.id)
+                props.startRemovingPost(props.index, post.id)
+                // props.removePost(props.index)
                 props.history.push('/')
             }}>> Remove</button>
             <Link className="button" to={`/single/${post.id}`}>
-                <div className="speech-bubble">
-                    <div>{ props.comments[post.id] ? props.comments[post.id].length : 0 }</div>
-                </div>
+            <div className="comment-count"> 
+                <div className="speech-bubble"> </div>
+                {props.comments[post.id] ? props.comments[post.id].length : 0 }
+            </div>
             </Link>
+
+            
         </div>
         
     </figure>)
